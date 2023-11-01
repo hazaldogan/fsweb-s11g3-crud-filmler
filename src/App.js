@@ -35,6 +35,7 @@ const App = (props) => {
       .delete(`http://localhost:9000/api/movies/${id}`)
       .then((res) => {
         setMovies(res.data);
+        push("/movies");
       })
       .catch((err) => {
         console.log(err);
@@ -56,11 +57,11 @@ const App = (props) => {
 
           <Switch>
             <Route path="/movies/edit/:id">
-              <EditMovieForm />
+              <EditMovieForm setMovies={setMovies} />
             </Route>
 
             <Route path="/movies/add/">
-              <AddMovieForm />
+              <AddMovieForm setMovies={setMovies} />
             </Route>
 
             <Route path="/movies/:id">
